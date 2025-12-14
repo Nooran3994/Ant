@@ -1,7 +1,5 @@
-import image_cbb4c7013af48e3ff457123423a48220ab120d11 from 'figma:asset/cbb4c7013af48e3ff457123423a48220ab120d11.png';
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
-import antLogo from 'figma:asset/0696cc43fb19e911c4524db40812c7ba4161e327.png';
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,7 +10,7 @@ export function Navigation() {
         <div className="bg-white/95 backdrop-blur-sm rounded-full shadow-md p-[18px] flex items-center justify-between mx-[155px] my-[8px] px-[18px] py-[3px]">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <img src={image_cbb4c7013af48e3ff457123423a48220ab120d11} alt="Ant Logo" className="h-12 w-auto" />
+            <img src="/images/ant-logo.svg" alt="Ant Logo" className="h-12 w-auto" />
           </div>
 
           {/* Menu Items */}
