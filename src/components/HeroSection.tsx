@@ -1,7 +1,11 @@
 import React from 'react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
-export function HeroSection() {
+interface HeroSectionProps {
+  setCurrentPage?: (page: string) => void;
+}
+
+export function HeroSection({ setCurrentPage }: HeroSectionProps) {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -31,7 +35,10 @@ export function HeroSection() {
           <button className="w-full sm:w-auto bg-[#00A651] text-white px-[32px] py-[5px] rounded-full hover:bg-[#008F47] transition-all duration-300 hover:scale-105 shadow-lg">
             Get Started
           </button>
-          <button className="w-full sm:w-auto bg-transparent text-white border-2 border-white px-[32px] py-[5px] rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
+          <button 
+            onClick={() => setCurrentPage && setCurrentPage('brooding-guide')}
+            className="w-full sm:w-auto bg-transparent text-white border-2 border-white px-[32px] py-[5px] rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105"
+          >
             Learn More
           </button>
         </div>

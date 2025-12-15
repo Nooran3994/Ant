@@ -9,20 +9,29 @@ import { TeamSection } from './components/TeamSection';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
+import { BroodingGuidePage } from './components/BroodingGuidePage';
 
 export default function App() {
+  const [currentPage, setCurrentPage] = React.useState('home');
+
   return (
     <div className="min-h-screen">
-      <Navigation />
-      <HeroSection />
-      <SolutionsSection />
-      <ResultsSection />
-      <StorySection />
-      <VisionSection />
-      <TeamSection />
-      <CTASection />
-      <Footer />
-      <ScrollToTop />
+      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      {currentPage === 'home' ? (
+        <>
+          <HeroSection setCurrentPage={setCurrentPage} />
+          <SolutionsSection />
+          <ResultsSection />
+          <StorySection />
+          <VisionSection />
+          <TeamSection />
+          <CTASection />
+          <Footer />
+          <ScrollToTop />
+        </>
+      ) : currentPage === 'brooding-guide' ? (
+        <BroodingGuidePage />
+      ) : null}
     </div>
   );
 }
