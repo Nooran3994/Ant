@@ -9,15 +9,17 @@ import { TeamSection } from './components/TeamSection';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
-import { BroodingGuidePage } from './components/BroodingGuidePage';
+import { GetStartedPage } from './components/GetStartedPage';
 
 export default function App() {
   const [currentPage, setCurrentPage] = React.useState('home');
 
   return (
     <div className="min-h-screen">
+      {/* Navigation is always visible on every page */}
       <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      {currentPage === 'home' ? (
+
+      {currentPage === 'home' && (
         <>
           <HeroSection setCurrentPage={setCurrentPage} />
           <SolutionsSection />
@@ -25,13 +27,15 @@ export default function App() {
           <StorySection />
           <VisionSection />
           <TeamSection />
-          <CTASection />
+          <CTASection setCurrentPage={setCurrentPage} />
           <Footer />
           <ScrollToTop />
         </>
-      ) : currentPage === 'brooding-guide' ? (
-        <BroodingGuidePage />
-      ) : null}
+      )}
+
+      {currentPage === 'get-started' && (
+        <GetStartedPage setCurrentPage={setCurrentPage} />
+      )}
     </div>
   );
 }

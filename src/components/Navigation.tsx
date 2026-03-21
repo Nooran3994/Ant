@@ -1,7 +1,7 @@
-import image_cbb4c7013af48e3ff457123423a48220ab120d11 from 'figma:asset/cbb4c7013af48e3ff457123423a48220ab120d11.png';
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
-import antLogo from 'figma:asset/0696cc43fb19e911c4524db40812c7ba4161e327.png';
+
+const ANT_LOGO = 'https://i.imgur.com/SabjzQm.png';
 
 interface NavigationProps {
   currentPage: string;
@@ -32,7 +32,7 @@ export function Navigation({ currentPage, setCurrentPage }: NavigationProps) {
         <div className="bg-white/95 backdrop-blur-sm rounded-full shadow-md p-[18px] flex items-center justify-between mx-[155px] my-[8px] px-[18px] py-[3px]">
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleNavClick('home')}>
-            <img src={image_cbb4c7013af48e3ff457123423a48220ab120d11} alt="Ant Logo" className="h-12 w-auto" />
+            <img src={ANT_LOGO} alt="ANT Logo" className="h-12 w-auto" />
           </div>
 
           {/* Menu Items */}
@@ -83,36 +83,11 @@ export function Navigation({ currentPage, setCurrentPage }: NavigationProps) {
               <X className="w-6 h-6" />
             </button>
             <div className="mt-16 flex flex-col gap-6">
-              <button 
-                onClick={() => handleNavClick('home')}
-                className="text-[#6F6F6F] hover:text-[#043236] transition-colors text-left"
-              >
-                Home
-              </button>
-              <button 
-                onClick={() => handleNavClick('home', '#solutions')}
-                className="text-[#6F6F6F] hover:text-[#043236] transition-colors text-left"
-              >
-                Solutions
-              </button>
-              <button 
-                onClick={() => handleNavClick('home', '#story')}
-                className="text-[#6F6F6F] hover:text-[#043236] transition-colors text-left"
-              >
-                Our Story
-              </button>
-              <button 
-                onClick={() => handleNavClick('home', '#team')}
-                className="text-[#6F6F6F] hover:text-[#043236] transition-colors text-left"
-              >
-                Team
-              </button>
-              <button 
-                onClick={() => handleNavClick('home', '#contact')}
-                className="text-[#6F6F6F] hover:text-[#043236] transition-colors text-left"
-              >
-                Contact
-              </button>
+              <button onClick={() => handleNavClick('home')} className="text-[#6F6F6F] hover:text-[#043236] transition-colors text-left">Home</button>
+              <button onClick={() => handleNavClick('home', '#solutions')} className="text-[#6F6F6F] hover:text-[#043236] transition-colors text-left">Solutions</button>
+              <button onClick={() => handleNavClick('home', '#story')} className="text-[#6F6F6F] hover:text-[#043236] transition-colors text-left">Our Story</button>
+              <button onClick={() => handleNavClick('home', '#team')} className="text-[#6F6F6F] hover:text-[#043236] transition-colors text-left">Team</button>
+              <button onClick={() => handleNavClick('home', '#contact')} className="text-[#6F6F6F] hover:text-[#043236] transition-colors text-left">Contact</button>
             </div>
           </div>
         </div>
