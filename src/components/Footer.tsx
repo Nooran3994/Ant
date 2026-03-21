@@ -8,23 +8,28 @@ export function Footer() {
     <footer style={{ background: '#F5F5F0' }} className="text-[#043236]">
 
       {/* ── Main grid ── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 sm:gap-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12 sm:py-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 sm:gap-12">
 
-          {/* Logo + tagline + socials */}
+          {/* ── Logo + tagline + socials ── full width on mobile */}
           <div className="lg:col-span-2">
-            <img src={ANT_LOGO} alt="ANT Logo" className="h-14 w-auto mb-5" />
-            <p className="text-sm sm:text-base text-[#6F6F6F] leading-relaxed max-w-xs mb-7">
+            <img
+              src={ANT_LOGO}
+              alt="ANT Logo"
+              className="h-14 w-auto mb-5"
+            />
+            <p className="text-sm text-[#6F6F6F] leading-relaxed max-w-xs mb-7">
               Empowering farmers through innovation. World-class hardware, software, and services
               for sustainable, profitable agriculture.
             </p>
+            {/* Social icons */}
             <div className="flex items-center gap-4">
               <a
                 href="https://web.facebook.com/ANT.Ltd.2025"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-[#6F6F6F] hover:text-[#043236] hover:border-[#043236] transition-colors"
+                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-[#6F6F6F] hover:text-[#043236] hover:border-[#043236] transition-colors"
               >
                 <Facebook className="w-4 h-4" />
               </a>
@@ -33,29 +38,29 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-[#6F6F6F] hover:text-[#043236] hover:border-[#043236] transition-colors"
+                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-[#6F6F6F] hover:text-[#043236] hover:border-[#043236] transition-colors"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
               <a
                 href="mailto:info@adaptivenestingtech.com"
                 aria-label="Email"
-                className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-[#6F6F6F] hover:text-[#043236] hover:border-[#043236] transition-colors"
+                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-[#6F6F6F] hover:text-[#043236] hover:border-[#043236] transition-colors"
               >
                 <Mail className="w-4 h-4" />
               </a>
             </div>
           </div>
 
-          {/* Solutions */}
+          {/* ── Solutions ── */}
           <div>
-            <h4 className="text-sm font-semibold text-[#043236] uppercase tracking-widest mb-5">
+            <h4 className="text-sm font-bold text-[#043236] uppercase tracking-widest mb-5">
               Solutions
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {['Hardware', 'Software', 'Services'].map((item) => (
                 <li key={item}>
-                  <a href="#" className="text-sm text-[#6F6F6F] hover:text-[#043236] transition-colors">
+                  <a href="#solutions" className="text-sm text-[#6F6F6F] hover:text-[#043236] transition-colors">
                     {item}
                   </a>
                 </li>
@@ -63,16 +68,16 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Company */}
+          {/* ── Company ── */}
           <div>
-            <h4 className="text-sm font-semibold text-[#043236] uppercase tracking-widest mb-5">
+            <h4 className="text-sm font-bold text-[#043236] uppercase tracking-widest mb-5">
               Company
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {[
                 { label: 'About Us',  href: '#'        },
                 { label: 'Our Story', href: '#story'   },
-                { label: 'Impact',    href: '#'        },
+                { label: 'Impact',    href: '#results' },
                 { label: 'Team',      href: '#team'    },
                 { label: 'Contact',   href: '#contact' },
               ].map(({ label, href }) => (
@@ -85,12 +90,12 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Support */}
+          {/* ── Support ── */}
           <div>
-            <h4 className="text-sm font-semibold text-[#043236] uppercase tracking-widest mb-5">
+            <h4 className="text-sm font-bold text-[#043236] uppercase tracking-widest mb-5">
               Support
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               <li>
                 <a href="#contact" className="text-sm text-[#6F6F6F] hover:text-[#043236] transition-colors">
                   Contact Us
@@ -112,7 +117,7 @@ export function Footer() {
 
       {/* ── Bottom bar ── */}
       <div className="border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
           <p className="text-xs sm:text-sm text-[#6F6F6F]">
             &copy; 2025 ANT (Adaptive Nesting Technologies). All rights reserved.
           </p>
