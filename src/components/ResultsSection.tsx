@@ -41,7 +41,7 @@ export function ResultsSection() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-white">
+    <section id="results" className="py-16 sm:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
@@ -56,7 +56,7 @@ export function ResultsSection() {
         {/* Results Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 sm:mb-20">
           {results.map((result, index) => (
-            <div 
+            <div
               key={index}
               className="bg-[#F8F9FA] rounded-2xl p-6 sm:p-8 hover:shadow-lg transition-shadow"
             >

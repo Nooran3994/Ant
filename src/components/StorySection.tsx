@@ -77,7 +77,7 @@ export function StorySection() {
             </div>
             <div>
               <img 
-                src="https://images.unsplash.com/photo-1751394211293-66bebbbd7149?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwdGVhbSUyMGdyb3VwJTIwc3VjY2Vzc3xlbnwxfHx8fDE3NjUzMDc1MTR8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                src="https://i.imgur.com/VMC0TqS.png"
                 alt="ANT Team" 
                 className="w-full rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
               />
