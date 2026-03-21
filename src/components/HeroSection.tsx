@@ -11,6 +11,12 @@ export function HeroSection({ setCurrentPage }: HeroSectionProps) {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const stats = [
+    { value: '50K+',   label: 'Saved Chicks'   },
+    { value: '1,200+', label: 'Farmers'        },
+    { value: '20%',    label: 'Energy Savings' },
+  ];
+
   return (
     <section
       id="home"
@@ -23,72 +29,50 @@ export function HeroSection({ setCurrentPage }: HeroSectionProps) {
           alt="African agriculture farming landscape"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-5 sm:px-8 lg:px-8 text-center flex flex-col items-center justify-center py-32 sm:py-40">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
 
         {/* Headline */}
-        <h1 className="text-white font-bold leading-tight mb-6 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl">
+        <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
           Empowering farmers.<br />
           Sustaining agriculture.
         </h1>
 
         {/* Subtext */}
-        <p className="text-white/90 text-base sm:text-lg lg:text-xl mb-10 max-w-2xl mx-auto leading-relaxed text-center">
+        <p className="text-white text-base sm:text-lg lg:text-xl mb-10 max-w-3xl mx-auto leading-relaxed">
           We innovate solutions like JotoPro heaters for brooding that reduce chick mortality,
           cut energy cost and boost profitability.
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto mb-14 sm:mb-24 px-0">
+        {/* CTA Buttons — stacked on mobile, side-by-side on sm+ */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 sm:mb-24">
           <button
             onClick={() => setCurrentPage && setCurrentPage('get-started')}
-            className="w-full sm:w-auto bg-[#00A651] text-white text-base font-semibold px-10 py-4 rounded-full hover:bg-[#008F47] transition-all duration-300 hover:scale-105 shadow-lg"
+            className="w-full sm:w-auto bg-[#00A651] text-white px-[32px] py-[5px] rounded-full hover:bg-[#008F47] transition-all duration-300 hover:scale-105 shadow-lg"
           >
             Get Started
           </button>
           <button
             onClick={scrollToResults}
-            className="w-full sm:w-auto bg-white/10 backdrop-blur-sm text-white text-base font-semibold px-10 py-4 rounded-full border-2 border-white hover:bg-white/20 transition-all duration-300 hover:scale-105"
+            className="w-full sm:w-auto bg-transparent text-white border-2 border-white px-[32px] py-[5px] rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105"
           >
             Learn More
           </button>
         </div>
 
-        {/* Stats — stacked with dividers on mobile, row on sm+ */}
-        <div className="w-full max-w-sm sm:max-w-lg mx-auto">
-
-          {/* Mobile: vertical stack */}
-          <div className="flex flex-col sm:hidden divide-y divide-white/20 rounded-2xl overflow-hidden bg-white/10 backdrop-blur-sm">
-            {[
-              { value: '50K+',   label: 'Saved Chicks'   },
-              { value: '1,200+', label: 'Farmers'        },
-              { value: '20%',    label: 'Energy Savings' },
-            ].map(({ value, label }) => (
-              <div key={label} className="flex items-center justify-between px-6 py-4">
-                <span className="text-white/80 text-sm font-medium">{label}</span>
-                <span className="text-white text-2xl font-bold">{value}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Desktop: horizontal row */}
-          <div className="hidden sm:grid grid-cols-3 gap-8">
-            {[
-              { value: '50K+',   label: 'Saved Chicks'   },
-              { value: '1,200+', label: 'Farmers'        },
-              { value: '20%',    label: 'Energy Savings' },
-            ].map(({ value, label }) => (
-              <div key={label} className="text-white text-center">
-                <div className="text-3xl lg:text-5xl font-bold mb-1">{value}</div>
-                <div className="text-sm opacity-80">{label}</div>
-              </div>
-            ))}
-          </div>
-
+        {/* Stats — always horizontal row on every screen size */}
+        <div className="flex flex-row items-center justify-center gap-8 sm:gap-16 lg:gap-24">
+          {stats.map(({ value, label }) => (
+            <div key={label} className="text-white text-center">
+              <div className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-1">{value}</div>
+              <div className="text-xs sm:text-base opacity-90">{label}</div>
+            </div>
+          ))}
         </div>
+
       </div>
     </section>
   );
