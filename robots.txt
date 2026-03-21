@@ -1,0 +1,8 @@
+# Robots.txt - Adaptive Nesting Technologies
+# https://www.adaptivenestingtech.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.adaptivenestingtech.com/sitemap.xml
