@@ -35,14 +35,14 @@ export function HeroSection({ setCurrentPage }: HeroSectionProps) {
           Sustaining agriculture.
         </h1>
 
-        {/* Sub-text */}
+        {/* Subtext */}
         <p className="text-white/90 text-base sm:text-lg lg:text-xl mb-10 max-w-2xl mx-auto leading-relaxed text-center">
           We innovate solutions like JotoPro heaters for brooding that reduce chick mortality,
           cut energy cost and boost profitability.
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto mb-16 sm:mb-24 px-0">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto mb-14 sm:mb-24 px-0">
           <button
             onClick={() => setCurrentPage && setCurrentPage('get-started')}
             className="w-full sm:w-auto bg-[#00A651] text-white text-base font-semibold px-10 py-4 rounded-full hover:bg-[#008F47] transition-all duration-300 hover:scale-105 shadow-lg"
@@ -57,18 +57,37 @@ export function HeroSection({ setCurrentPage }: HeroSectionProps) {
           </button>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-3 gap-4 sm:gap-8 w-full max-w-lg mx-auto">
-          {[
-            { value: '50K+',   label: 'Saved Chicks'   },
-            { value: '1,200+', label: 'Farmers'        },
-            { value: '20%',    label: 'Energy Savings' },
-          ].map(({ value, label }) => (
-            <div key={label} className="text-white text-center">
-              <div className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-1">{value}</div>
-              <div className="text-xs sm:text-sm opacity-80">{label}</div>
-            </div>
-          ))}
+        {/* Stats — stacked with dividers on mobile, row on sm+ */}
+        <div className="w-full max-w-sm sm:max-w-lg mx-auto">
+
+          {/* Mobile: vertical stack */}
+          <div className="flex flex-col sm:hidden divide-y divide-white/20 rounded-2xl overflow-hidden bg-white/10 backdrop-blur-sm">
+            {[
+              { value: '50K+',   label: 'Saved Chicks'   },
+              { value: '1,200+', label: 'Farmers'        },
+              { value: '20%',    label: 'Energy Savings' },
+            ].map(({ value, label }) => (
+              <div key={label} className="flex items-center justify-between px-6 py-4">
+                <span className="text-white/80 text-sm font-medium">{label}</span>
+                <span className="text-white text-2xl font-bold">{value}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: horizontal row */}
+          <div className="hidden sm:grid grid-cols-3 gap-8">
+            {[
+              { value: '50K+',   label: 'Saved Chicks'   },
+              { value: '1,200+', label: 'Farmers'        },
+              { value: '20%',    label: 'Energy Savings' },
+            ].map(({ value, label }) => (
+              <div key={label} className="text-white text-center">
+                <div className="text-3xl lg:text-5xl font-bold mb-1">{value}</div>
+                <div className="text-sm opacity-80">{label}</div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>
