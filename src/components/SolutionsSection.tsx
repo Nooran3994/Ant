@@ -29,7 +29,11 @@ const servicesFeatures = [
   'Farm setup advisory from housing to flock management',
 ];
 
-export function SolutionsSection() {
+interface SolutionsSectionProps {
+  setCurrentPage?: (page: string) => void;
+}
+
+export function SolutionsSection({ setCurrentPage }: SolutionsSectionProps) {
   const [activeTab, setActiveTab] = useState('hardware');
   const [current, setCurrent] = useState(0);
   const [prev, setPrev] = useState<number | null>(null);
@@ -67,22 +71,10 @@ export function SolutionsSection() {
   return (
     <>
       <style>{`
-        @keyframes slideInFromRight {
-          from { transform: translateX(60px); opacity: 0; }
-          to   { transform: translateX(0);    opacity: 1; }
-        }
-        @keyframes slideInFromLeft {
-          from { transform: translateX(-60px); opacity: 0; }
-          to   { transform: translateX(0);     opacity: 1; }
-        }
-        @keyframes slideOutToLeft {
-          from { transform: translateX(0);     opacity: 1; }
-          to   { transform: translateX(-60px); opacity: 0; }
-        }
-        @keyframes slideOutToRight {
-          from { transform: translateX(0);    opacity: 1; }
-          to   { transform: translateX(60px); opacity: 0; }
-        }
+        @keyframes slideInFromRight { from{transform:translateX(60px);opacity:0} to{transform:translateX(0);opacity:1} }
+        @keyframes slideInFromLeft  { from{transform:translateX(-60px);opacity:0} to{transform:translateX(0);opacity:1} }
+        @keyframes slideOutToLeft   { from{transform:translateX(0);opacity:1} to{transform:translateX(-60px);opacity:0} }
+        @keyframes slideOutToRight  { from{transform:translateX(0);opacity:1} to{transform:translateX(60px);opacity:0} }
         .slide-in-right  { animation: slideInFromRight 0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
         .slide-in-left   { animation: slideInFromLeft  0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
         .slide-out-left  { animation: slideOutToLeft   0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
@@ -119,7 +111,7 @@ export function SolutionsSection() {
             ))}
           </div>
 
-          {/* ── Hardware Tab ── */}
+          {/* ── Hardware ── */}
           {activeTab === 'hardware' && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div>
@@ -172,7 +164,7 @@ export function SolutionsSection() {
             </div>
           )}
 
-          {/* ── Software Tab ── */}
+          {/* ── Software ── */}
           {activeTab === 'software' && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               <div>
@@ -192,9 +184,18 @@ export function SolutionsSection() {
                     </div>
                   ))}
                 </div>
-                <button type="button"
+                {/* Poultry Advisory Tool button — wired to page */}
+                <button
+                  type="button"
+                  onClick={() => setCurrentPage && setCurrentPage('poultry-advisory')}
                   className="inline-flex items-center gap-3 text-white font-semibold transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
-                  style={{ background: 'linear-gradient(135deg, #00A651 0%, #008c44 100%)', boxShadow: '0 4px 16px rgba(0,166,81,0.28)', borderRadius: '10px', padding: '14px 32px', fontSize: '15px' }}
+                  style={{
+                    background: 'linear-gradient(135deg, #00A651 0%, #008c44 100%)',
+                    boxShadow: '0 4px 16px rgba(0,166,81,0.28)',
+                    borderRadius: '10px',
+                    padding: '14px 32px',
+                    fontSize: '15px',
+                  }}
                 >
                   Poultry Advisory Tool
                   <ArrowRight className="w-4 h-4" />
@@ -207,11 +208,9 @@ export function SolutionsSection() {
             </div>
           )}
 
-          {/* ── Services Tab ── */}
+          {/* ── Services ── */}
           {activeTab === 'services' && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-
-              {/* Left: description */}
               <div>
                 <div className="w-16 h-16 rounded-2xl bg-[#00A651]/10 flex items-center justify-center mb-6">
                   <HeartHandshake className="w-8 h-8 text-[#00A651]" />
@@ -220,10 +219,9 @@ export function SolutionsSection() {
                   Comprehensive support from installation to optimization
                 </h3>
                 <p className="text-sm sm:text-base text-[#6F6F6F] leading-relaxed mb-6">
-                  We don't just sell products — we walk alongside you. From the day your equipment 
+                  We don't just sell products — we walk alongside you. From the day your equipment
                   arrives to long-term farm performance consulting, our team is with you every step of the way.
                 </p>
-
                 <div className="space-y-4 mb-8">
                   {servicesFeatures.map((f, i) => (
                     <div key={i} className="flex items-start gap-3">
@@ -234,28 +232,17 @@ export function SolutionsSection() {
                     </div>
                   ))}
                 </div>
-
-                {/* Service type badges */}
                 <div className="flex flex-wrap gap-3">
                   {['Installation', 'Training', 'Consulting', 'After-Sales'].map((badge) => (
-                    <span
-                      key={badge}
-                      className="text-[13px] font-semibold px-4 py-1.5 rounded-full"
-                      style={{ background: 'rgba(0,166,81,0.10)', color: '#00A651', border: '1px solid rgba(0,166,81,0.25)' }}
-                    >
+                    <span key={badge} className="text-[13px] font-semibold px-4 py-1.5 rounded-full"
+                      style={{ background: 'rgba(0,166,81,0.10)', color: '#00A651', border: '1px solid rgba(0,166,81,0.25)' }}>
                       {badge}
                     </span>
                   ))}
                 </div>
               </div>
-
-              {/* Right: image */}
               <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-                <img
-                  src="https://i.imgur.com/fxLThH6.png"
-                  alt="ANT comprehensive farm support and consulting"
-                  className="w-full h-full object-cover"
-                />
+                <img src="https://i.imgur.com/fxLThH6.png" alt="ANT comprehensive farm support" className="w-full h-full object-cover" />
               </div>
             </div>
           )}
