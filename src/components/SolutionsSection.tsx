@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Cpu, Check, ChevronLeft, ChevronRight, Monitor, ArrowRight, HeartHandshake } from 'lucide-react';
+import { Cpu, Check, ChevronLeft, ChevronRight, Monitor, ArrowRight, HeartHandshake, Sun, BarChart2, Tag, Database, RefreshCw } from 'lucide-react';
 
 const IMAGES = [
   { src: 'https://i.imgur.com/IsdQlQq.jpeg', alt: 'JotoPro Heater in use on farm' },
@@ -8,9 +8,11 @@ const IMAGES = [
 
 const hardwareFeatures = [
   'Precise temperature control with innovative infrared technology',
-  'Energy savings up to 30% with low-power design',
-  'Uniform heat distribution ensuring optimal chick comfort',
-  'Smart temperature regulation adapting to weather changes',
+  'Solar-powered — zero electricity costs, runs off-grid on any farm',
+  'Energy savings up to 30% compared to traditional brooding methods',
+  'Serves 500+ chicks per unit with uniform heat distribution',
+  'Smart temperature regulation adapting automatically to weather changes',
+  'Built-in data collection for farm performance and flock insights',
   'Seamless integration with existing brooder setups',
 ];
 
@@ -19,6 +21,9 @@ const softwareFeatures = [
   'Phase-by-phase feeding guidance from brooding to finishing',
   'Actionable breed-specific recommendations at every growth stage',
   'Performance benchmarks to measure your flock against best practice',
+  'Farmer credit scoring powered by verified farm performance data',
+  'Market linking — connect directly to buyers and offtakers',
+  'Aggregated flock data to unlock financial and advisory services',
 ];
 
 const servicesFeatures = [
@@ -68,6 +73,11 @@ export function SolutionsSection({ setCurrentPage }: SolutionsSectionProps) {
     timerRef.current = setInterval(next, 4500);
   };
 
+  const scrollToResults = () => {
+    const el = document.getElementById('results');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <>
       <style>{`
@@ -79,6 +89,35 @@ export function SolutionsSection({ setCurrentPage }: SolutionsSectionProps) {
         .slide-in-left   { animation: slideInFromLeft  0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
         .slide-out-left  { animation: slideOutToLeft   0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
         .slide-out-right { animation: slideOutToRight  0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
+        .btn-lease {
+          display: inline-flex; align-items: center; gap: 12px;
+          color: white; font-weight: 600; font-size: 15px;
+          background: linear-gradient(135deg, #00A651 0%, #008c44 100%);
+          box-shadow: 0 4px 16px rgba(0,166,81,0.28);
+          border-radius: 10px; padding: 14px 28px; border: none; cursor: pointer;
+          transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+        .btn-lease:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 24px rgba(0,166,81,0.40); background: linear-gradient(135deg, #00b85c 0%, #009e4e 100%); }
+        .btn-lease:active { transform: scale(0.97); }
+        .btn-outline {
+          display: inline-flex; align-items: center; gap: 12px;
+          color: #043236; font-weight: 600; font-size: 15px;
+          background: transparent; border: 2px solid #043236;
+          border-radius: 10px; padding: 14px 28px; cursor: pointer;
+          transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-outline:hover { background: #043236; color: white; transform: translateY(-2px) scale(1.02); box-shadow: 0 6px 20px rgba(4,50,54,0.20); }
+        .btn-outline:active { transform: scale(0.97); }
+        .btn-green {
+          display: inline-flex; align-items: center; gap: 12px;
+          color: white; font-weight: 600; font-size: 15px;
+          background: linear-gradient(135deg, #00A651 0%, #008c44 100%);
+          box-shadow: 0 4px 16px rgba(0,166,81,0.28);
+          border-radius: 10px; padding: 14px 32px; border: none; cursor: pointer;
+          transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+        .btn-green:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 24px rgba(0,166,81,0.40); background: linear-gradient(135deg, #00b85c 0%, #009e4e 100%); }
+        .btn-green:active { transform: scale(0.97); }
       `}</style>
 
       <section id="solutions" className="py-16 sm:py-24 bg-white">
@@ -113,15 +152,31 @@ export function SolutionsSection({ setCurrentPage }: SolutionsSectionProps) {
 
           {/* ── Hardware ── */}
           {activeTab === 'hardware' && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+
+              {/* LEFT — text + features + buttons */}
               <div>
                 <div className="w-16 h-16 rounded-2xl bg-[#00A651]/10 flex items-center justify-center mb-6">
                   <Cpu className="w-8 h-8 text-[#00A651]" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-[#043236] mb-6 leading-tight">
-                  JotoPro Heater — The ultimate solution for efficient, uniform heating in brooding
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#043236] mb-4 leading-tight">
+                  JotoPro Heater — Solar-powered smart brooding for every farm
                 </h3>
-                <div className="space-y-4">
+
+                {/* Key badges */}
+                <div className="flex flex-wrap gap-3 mb-6">
+                  <div className="flex items-center gap-2 bg-[#00A651]/10 text-[#00A651] text-sm font-semibold px-4 py-2 rounded-full">
+                    <Sun className="w-4 h-4" /> Solar Powered
+                  </div>
+                  <div className="flex items-center gap-2 bg-[#043236]/10 text-[#043236] text-sm font-semibold px-4 py-2 rounded-full">
+                    <Tag className="w-4 h-4" /> Lease from Ksh 3,000
+                  </div>
+                  <div className="flex items-center gap-2 bg-[#00A651]/10 text-[#00A651] text-sm font-semibold px-4 py-2 rounded-full">
+                    <BarChart2 className="w-4 h-4" /> 500+ Chicks per Unit
+                  </div>
+                </div>
+
+                <div className="space-y-3 mb-8">
                   {hardwareFeatures.map((f, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <div className="w-6 h-6 rounded-full bg-[#00A651] flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -131,8 +186,19 @@ export function SolutionsSection({ setCurrentPage }: SolutionsSectionProps) {
                     </div>
                   ))}
                 </div>
+
+                {/* Buttons */}
+                <div className="flex flex-wrap gap-4">
+                  <button className="btn-lease" onClick={() => setCurrentPage && setCurrentPage('get-started')}>
+                    Lease JotoPro <ArrowRight className="w-4 h-4" />
+                  </button>
+                  <button className="btn-outline" onClick={scrollToResults}>
+                    Learn More
+                  </button>
+                </div>
               </div>
 
+              {/* RIGHT — slideshow + data callout below */}
               <div className="relative group" onMouseEnter={pauseTimer} onMouseLeave={resumeTimer}>
                 <div className="relative overflow-hidden rounded-2xl shadow-lg bg-gray-100" style={{ aspectRatio: '4/3' }}>
                   {prev !== null && (
@@ -152,7 +218,9 @@ export function SolutionsSection({ setCurrentPage }: SolutionsSectionProps) {
                     <ChevronRight className="w-5 h-5 text-[#043236]" />
                   </button>
                 </div>
-                <div className="flex justify-center gap-2 mt-4">
+
+                {/* Dot indicators */}
+                <div className="flex justify-center gap-2 mt-4 mb-5">
                   {IMAGES.map((_, i) => (
                     <button key={i} onClick={() => goTo(i, i > current ? 'right' : 'left')}
                       className="rounded-full transition-all duration-300"
@@ -160,7 +228,24 @@ export function SolutionsSection({ setCurrentPage }: SolutionsSectionProps) {
                     />
                   ))}
                 </div>
+
+                {/* Data-Driven callout — now lives in the right column */}
+                <div className="bg-[#043236]/5 border border-[#043236]/10 rounded-2xl p-5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-7 h-7 rounded-lg bg-[#043236]/10 flex items-center justify-center flex-shrink-0">
+                      <Database className="w-4 h-4 text-[#043236]" />
+                    </div>
+                    <p className="text-sm font-bold text-[#043236]">Data-Driven Farm Services</p>
+                  </div>
+                  <p className="text-sm text-[#6F6F6F] leading-relaxed">
+                    Every JotoPro unit collects real farm data. We use this to offer farmers
+                    <strong className="text-[#043236]"> credit scoring</strong>,
+                    <strong className="text-[#043236]"> market linkages</strong>, and
+                    <strong className="text-[#043236]"> personalised advisory services</strong> — turning your farm data into real financial opportunities.
+                  </p>
+                </div>
               </div>
+
             </div>
           )}
 
@@ -171,9 +256,13 @@ export function SolutionsSection({ setCurrentPage }: SolutionsSectionProps) {
                 <div className="w-16 h-16 rounded-2xl bg-[#00A651]/10 flex items-center justify-center mb-6">
                   <Monitor className="w-8 h-8 text-[#00A651]" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-[#043236] mb-6 leading-tight">
-                  Intelligent platform that turns data into actionable insights
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#043236] mb-3 leading-tight">
+                  Intelligent platform that turns farm data into actionable insights
                 </h3>
+                <p className="text-sm sm:text-base text-[#6F6F6F] leading-relaxed mb-6">
+                  Our software doesn't just plan — it learns from your farm's data to unlock financial services,
+                  connect you to markets, and benchmark your performance against Kenya's best farmers.
+                </p>
                 <div className="space-y-4 mb-8">
                   {softwareFeatures.map((f, i) => (
                     <div key={i} className="flex items-start gap-3">
@@ -184,24 +273,21 @@ export function SolutionsSection({ setCurrentPage }: SolutionsSectionProps) {
                     </div>
                   ))}
                 </div>
-                {/* Poultry Advisory Tool button — wired to page */}
-                <button
-                  type="button"
-                  onClick={() => setCurrentPage && setCurrentPage('poultry-advisory')}
-                  className="inline-flex items-center gap-3 text-white font-semibold transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
-                  style={{
-                    background: 'linear-gradient(135deg, #00A651 0%, #008c44 100%)',
-                    boxShadow: '0 4px 16px rgba(0,166,81,0.28)',
-                    borderRadius: '10px',
-                    padding: '14px 32px',
-                    fontSize: '15px',
-                  }}
-                >
-                  Poultry Advisory Tool
-                  <ArrowRight className="w-4 h-4" />
+                <div className="bg-[#00A651]/5 border border-[#00A651]/20 rounded-2xl p-5 mb-8">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-7 h-7 rounded-lg bg-[#00A651]/10 flex items-center justify-center flex-shrink-0">
+                      <RefreshCw className="w-4 h-4 text-[#00A651]" />
+                    </div>
+                    <p className="text-sm font-bold text-[#043236]">The ANT Data Flywheel</p>
+                  </div>
+                  <p className="text-sm text-[#6F6F6F] leading-relaxed">
+                    Better farm data → smarter recommendations → improved performance → stronger credit profile → access to capital and markets.
+                  </p>
+                </div>
+                <button className="btn-green" onClick={() => setCurrentPage && setCurrentPage('poultry-advisory')}>
+                  Poultry Advisory Tool <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
-
               <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100">
                 <img src="https://i.imgur.com/VnWEHT2.png" alt="ANT Poultry Advisory Software Dashboard" className="w-full h-full object-cover" />
               </div>

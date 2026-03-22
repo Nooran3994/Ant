@@ -12,9 +12,9 @@ export function HeroSection({ setCurrentPage }: HeroSectionProps) {
   };
 
   const stats = [
-    { value: '50K+',   label: 'Saved Chicks'   },
-    { value: '1,200+', label: 'Farmers'        },
-    { value: '20%',    label: 'Energy Savings' },
+    { value: '50K+',   label: 'Saved Chicks'     },
+    { value: '1,200+', label: 'Farmers'           },
+    { value: 'Zero',   label: 'Electricity Costs' },
   ];
 
   return (
@@ -25,11 +25,11 @@ export function HeroSection({ setCurrentPage }: HeroSectionProps) {
       {/* Background */}
       <div className="absolute inset-0 w-full h-full">
         <ImageWithFallback
-          src="https://i.imgur.com/R0dKaHk.jpeg"
-          alt="African agriculture farming landscape"
-          className="w-full h-full object-cover"
+          src="https://i.imgur.com/1OzBex5.png"
+          alt="Smart farming technology empowering African farmers"
+          className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/50" />
       </div>
 
       {/* Content */}
@@ -41,29 +41,53 @@ export function HeroSection({ setCurrentPage }: HeroSectionProps) {
           Sustaining agriculture.
         </h1>
 
-        {/* Subtext */}
-        <p className="text-white text-base sm:text-lg lg:text-xl mb-10 max-w-3xl mx-auto leading-relaxed">
-          We innovate solutions like JotoPro heaters for brooding that reduce chick mortality,
-          cut energy cost and boost profitability.
+        {/* Subtext — white for visibility */}
+        <p
+          className="text-white text-base sm:text-lg lg:text-xl mb-10 max-w-3xl mx-auto leading-relaxed"
+        >
+          We innovate solutions like JotoPro — a solar-powered smart brooder that reduces chick mortality,
+          eliminates electricity costs and boosts profitability.
         </p>
 
-        {/* CTA Buttons — stacked on mobile, side-by-side on sm+ */}
+        {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 sm:mb-24">
+          {/* Get Started — solid green */}
           <button
             onClick={() => setCurrentPage && setCurrentPage('get-started')}
-            className="w-full sm:w-auto bg-[#00A651] text-white px-[32px] py-[5px] rounded-full hover:bg-[#008F47] transition-all duration-300 hover:scale-105 shadow-lg"
+            className="w-full sm:w-auto text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg"
+            style={{ background: '#00A651' }}
+            onMouseEnter={e => (e.currentTarget.style.background = '#008F47')}
+            onMouseLeave={e => (e.currentTarget.style.background = '#00A651')}
           >
             Get Started
           </button>
+
+          {/* Learn More — glassmorphism blur effect */}
           <button
             onClick={scrollToResults}
-            className="w-full sm:w-auto bg-transparent text-white border-2 border-white px-[32px] py-[5px] rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105"
+            className="w-full sm:w-auto font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
+            style={{
+              background: 'rgba(255, 255, 255, 0.15)',
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
+              border: '1.5px solid rgba(255, 255, 255, 0.40)',
+              color: 'white',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.background = 'rgba(255,255,255,0.25)';
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.65)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.background = 'rgba(255,255,255,0.15)';
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.40)';
+            }}
           >
             Learn More
           </button>
         </div>
 
-        {/* Stats — always horizontal row on every screen size */}
+        {/* Stats */}
         <div className="flex flex-row items-center justify-center gap-8 sm:gap-16 lg:gap-24">
           {stats.map(({ value, label }) => (
             <div key={label} className="text-white text-center">
