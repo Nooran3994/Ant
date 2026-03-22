@@ -17,9 +17,10 @@ export function CTASection({ setCurrentPage }: CTASectionProps) {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-          {/* Poultry Advisory Tool — no functionality yet */}
+          {/* Poultry Advisory Tool → navigates to tool page */}
           <button
             type="button"
+            onClick={() => setCurrentPage && setCurrentPage('poultry-advisory')}
             className="inline-flex items-center gap-2 text-white font-semibold transition-all duration-200 hover:opacity-90 active:scale-[0.98] hover:scale-105"
             style={{
               background: 'linear-gradient(135deg, #00A651 0%, #008c44 100%)',
