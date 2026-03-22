@@ -10,19 +10,20 @@ import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
 import { GetStartedPage } from './components/GetStartedPage';
+import { PoultryAdvisoryPage } from './components/PoultryAdvisoryPage';
 
 export default function App() {
   const [currentPage, setCurrentPage] = React.useState('home');
 
   return (
     <div className="min-h-screen">
-      {/* Navigation is always visible on every page */}
+      {/* Navigation always visible */}
       <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
       {currentPage === 'home' && (
         <>
           <HeroSection setCurrentPage={setCurrentPage} />
-          <SolutionsSection />
+          <SolutionsSection setCurrentPage={setCurrentPage} />
           <ResultsSection />
           <StorySection />
           <VisionSection />
@@ -35,6 +36,10 @@ export default function App() {
 
       {currentPage === 'get-started' && (
         <GetStartedPage setCurrentPage={setCurrentPage} />
+      )}
+
+      {currentPage === 'poultry-advisory' && (
+        <PoultryAdvisoryPage setCurrentPage={setCurrentPage} />
       )}
     </div>
   );
