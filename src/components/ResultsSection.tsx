@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrendingUp, DollarSign, Zap, Heart } from 'lucide-react';
+import { TrendingUp, Zap, Heart, Sun } from 'lucide-react';
 
 export function ResultsSection() {
   const results = [
@@ -14,9 +14,9 @@ export function ResultsSection() {
       description: 'Boost in farm profitability'
     },
     {
-      icon: DollarSign,
-      value: '20%',
-      description: 'Lower energy/brooding costs'
+      icon: Sun,
+      value: 'Zero',
+      description: 'Electricity costs — JotoPro runs entirely on solar power, off-grid on any farm'
     },
     {
       icon: Zap,
@@ -32,7 +32,7 @@ export function ResultsSection() {
     },
     {
       title: 'Sustainability',
-      description: 'We prioritize eco-friendly practices that benefit both your farm and the planet. Our sustainable technologies reduce environmental impact while improving farm practices that work with your farm and the planet. Smart, sustainable choices for lasting results.'
+      description: 'We prioritize eco-friendly practices that benefit both your farm and the planet. JotoPro\'s solar-powered design eliminates electricity dependency, reducing your carbon footprint while cutting costs. Smart, sustainable choices for lasting results.'
     },
     {
       title: 'Efficiency',
@@ -43,6 +43,7 @@ export function ResultsSection() {
   return (
     <section id="results" className="py-16 sm:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#043236] mb-4">
@@ -78,6 +79,7 @@ export function ResultsSection() {
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
