@@ -15,32 +15,32 @@ import { PoultryAdvisoryPage } from './components/PoultryAdvisoryPage';
 export default function App() {
   const [currentPage, setCurrentPage] = React.useState('home');
 
+  // Always scroll to top when navigating to a new page
+  const navigateTo = (page: string) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
   return (
     <div className="min-h-screen">
-      {/* Navigation always visible */}
-      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
-
-      {currentPage === 'home' && (
+      <Navigation currentPage={currentPage} setCurrentPage={navigateTo} />
+      {currentPage === 'home' ? (
         <>
-          <HeroSection setCurrentPage={setCurrentPage} />
-          <SolutionsSection setCurrentPage={setCurrentPage} />
+          <HeroSection setCurrentPage={navigateTo} />
+          <SolutionsSection setCurrentPage={navigateTo} />
           <ResultsSection />
           <StorySection />
           <VisionSection />
           <TeamSection />
-          <CTASection setCurrentPage={setCurrentPage} />
+          <CTASection setCurrentPage={navigateTo} />
           <Footer />
           <ScrollToTop />
         </>
-      )}
-
-      {currentPage === 'get-started' && (
-        <GetStartedPage setCurrentPage={setCurrentPage} />
-      )}
-
-      {currentPage === 'poultry-advisory' && (
-        <PoultryAdvisoryPage setCurrentPage={setCurrentPage} />
-      )}
+      ) : currentPage === 'get-started' ? (
+        <GetStartedPage setCurrentPage={navigateTo} />
+      ) : currentPage === 'poultry-advisory' ? (
+        <PoultryAdvisoryPage setCurrentPage={navigateTo} />
+      ) : null}
     </div>
   );
 }
