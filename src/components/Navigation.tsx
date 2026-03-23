@@ -39,11 +39,11 @@ export function Navigation({ setCurrentPage }: NavigationProps) {
 
   return (
     <>
-      <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-50 w-full max-w-[90%] lg:max-w-5xl">
-        <div className="bg-white/95 backdrop-blur-sm rounded-full shadow-md flex items-center justify-between px-6 py-3">
+      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50" style={{ width: '820px', maxWidth: '95vw' }}>
+        <div className="bg-white/95 backdrop-blur-sm rounded-full shadow-md flex items-center justify-between px-8 py-[5px] w-full">
           {/* Logo */}
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleNavClick('/')}>
-            <img src="https://i.imgur.com/SabjzQm.png" alt="ANT Logo" className="h-14 w-auto" />
+          <div className="flex items-center gap-2 cursor-pointer flex-shrink-0" onClick={() => handleNavClick('/')}>
+            <img src="https://i.imgur.com/SabjzQm.png" alt="ANT Logo" className="h-12 w-auto" />
           </div>
 
           {/* Desktop links */}
@@ -52,7 +52,7 @@ export function Navigation({ setCurrentPage }: NavigationProps) {
               <button
                 key={label}
                 onClick={() => handleNavClick(path, hash)}
-                className="text-[#043236] hover:text-[#00A651] transition-colors text-base font-medium"
+                className="text-[#6F6F6F] hover:text-[#043236] transition-colors whitespace-nowrap text-sm font-medium"
               >
                 {label}
               </button>
