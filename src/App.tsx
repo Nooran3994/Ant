@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { Navigation } from './components/Navigation';
 import { HeroSection } from './components/HeroSection';
 import { VisionSection } from './components/VisionSection';
@@ -12,35 +13,60 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { GetStartedPage } from './components/GetStartedPage';
 import { PoultryAdvisoryPage } from './components/PoultryAdvisoryPage';
 
-export default function App() {
-  const [currentPage, setCurrentPage] = React.useState('home');
-
-  // Always scroll to top when navigating to a new page
-  const navigateTo = (page: string) => {
-    setCurrentPage(page);
+// Scrolls to top on every route change
+function ScrollToTopOnNavigate() {
+  const { pathname } = useLocation();
+  React.useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [pathname]);
+  return null;
+}
+
+function AppRoutes() {
+  const navigate = useNavigate();
+
+  const setCurrentPage = (page: string) => {
+    if (page === 'home') navigate('/');
+    else navigate(`/${page}`);
   };
 
   return (
-    <div className="min-h-screen">
-      <Navigation currentPage={currentPage} setCurrentPage={navigateTo} />
-      {currentPage === 'home' ? (
-        <>
-          <HeroSection setCurrentPage={navigateTo} />
-          <SolutionsSection setCurrentPage={navigateTo} />
-          <ResultsSection />
-          <StorySection />
-          <VisionSection />
-          <TeamSection />
-          <CTASection setCurrentPage={navigateTo} />
-          <Footer />
-          <ScrollToTop />
-        </>
-      ) : currentPage === 'get-started' ? (
-        <GetStartedPage setCurrentPage={navigateTo} />
-      ) : currentPage === 'poultry-advisory' ? (
-        <PoultryAdvisoryPage setCurrentPage={navigateTo} />
-      ) : null}
-    </div>
+    <>
+      <ScrollToTopOnNavigate />
+      <Navigation currentPage="" setCurrentPage={setCurrentPage} />
+      <Routes>
+        <Route path="/" element={
+          <>
+            <HeroSection setCurrentPage={setCurrentPage} />
+            <SolutionsSection setCurrentPage={setCurrentPage} />
+            <ResultsSection />
+            <StorySection />
+            <VisionSection />
+            <TeamSection />
+            <CTASection setCurrentPage={setCurrentPage} />
+            <Footer />
+            <ScrollToTop />
+          </>
+        } />
+        <Route path="/get-started" element={<GetStartedPage setCurrentPage={setCurrentPage} />} />
+        <Route path="/poultry-advisory" element={<PoultryAdvisoryPage setCurrentPage={setCurrentPage} />} />
+        {/* Catch-all → redirect home */}
+        <Route path="*" element={<RedirectHome />} />
+      </Routes>
+    </>
+  );
+}
+
+function RedirectHome() {
+  const navigate = useNavigate();
+  React.useEffect(() => { navigate('/'); }, []);
+  return null;
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   );
 }
