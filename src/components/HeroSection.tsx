@@ -47,39 +47,31 @@ export function HeroSection({ setCurrentPage }: HeroSectionProps) {
           eliminates <span style={{ color: '#00A651', fontWeight: 600 }}>electricity costs</span> and boosts <span style={{ color: '#00A651', fontWeight: 600 }}>profitability</span>.
         </p>
 
-        {/* CTA Buttons */}
+        {/* CTA Buttons — bigger */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 sm:mb-24">
-          {/* Get Started — solid green */}
           <button
             onClick={() => setCurrentPage && setCurrentPage('get-started')}
-            className="w-full sm:w-auto text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg"
-            style={{ background: '#00A651' }}
+            className="w-full sm:w-auto text-white font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 shadow-lg"
+            style={{ background: '#00A651', padding: '16px 48px' }}
             onMouseEnter={e => (e.currentTarget.style.background = '#008F47')}
             onMouseLeave={e => (e.currentTarget.style.background = '#00A651')}
           >
             Get Started
           </button>
-
-          {/* Learn More — glassmorphism blur effect */}
           <button
             onClick={scrollToResults}
-            className="w-full sm:w-auto font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
+            className="w-full sm:w-auto font-bold text-lg rounded-full transition-all duration-300 hover:scale-105"
             style={{
-              background: 'rgba(255, 255, 255, 0.15)',
+              background: 'rgba(255,255,255,0.15)',
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
-              border: '1.5px solid rgba(255, 255, 255, 0.40)',
+              border: '1.5px solid rgba(255,255,255,0.40)',
               color: 'white',
               boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+              padding: '16px 48px',
             }}
-            onMouseEnter={e => {
-              e.currentTarget.style.background = 'rgba(255,255,255,0.25)';
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.65)';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.background = 'rgba(255,255,255,0.15)';
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.40)';
-            }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.25)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.65)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.15)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.40)'; }}
           >
             Learn More
           </button>
