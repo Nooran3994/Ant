@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { Navigation } from './components/Navigation';
 import { HeroSection } from './components/HeroSection';
 import { VisionSection } from './components/VisionSection';
@@ -13,7 +14,6 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { GetStartedPage } from './components/GetStartedPage';
 import { PoultryAdvisoryPage } from './components/PoultryAdvisoryPage';
 
-// Scrolls to top on every route change
 function ScrollToTopOnNavigate() {
   const { pathname } = useLocation();
   React.useEffect(() => {
@@ -33,7 +33,7 @@ function AppRoutes() {
   return (
     <>
       <ScrollToTopOnNavigate />
-      <Navigation currentPage="" setCurrentPage={setCurrentPage} />
+      <Navigation setCurrentPage={setCurrentPage} />
       <Routes>
         <Route path="/" element={
           <>
@@ -50,7 +50,6 @@ function AppRoutes() {
         } />
         <Route path="/get-started" element={<GetStartedPage setCurrentPage={setCurrentPage} />} />
         <Route path="/poultry-advisory" element={<PoultryAdvisoryPage setCurrentPage={setCurrentPage} />} />
-        {/* Catch-all → redirect home */}
         <Route path="*" element={<RedirectHome />} />
       </Routes>
     </>
@@ -65,8 +64,10 @@ function RedirectHome() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }

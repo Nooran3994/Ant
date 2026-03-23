@@ -40,7 +40,7 @@ export function Navigation({ setCurrentPage }: NavigationProps) {
   return (
     <>
       <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-50 w-full max-w-[90%] lg:max-w-5xl">
-        <div className="bg-white/95 backdrop-blur-sm rounded-full shadow-md flex items-center justify-between px-[18px] py-[3px] mx-[155px] my-[8px]">
+        <div className="bg-white/95 backdrop-blur-sm rounded-full shadow-md flex items-center justify-between px-[18px] py-[3px]">
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleNavClick('/')}>
             <img src="https://i.imgur.com/SabjzQm.png" alt="ANT Logo" className="h-12 w-auto" />

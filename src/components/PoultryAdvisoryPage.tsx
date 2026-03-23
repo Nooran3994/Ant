@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Footer } from './Footer';
 
 interface PoultryAdvisoryPageProps {
@@ -28,7 +29,24 @@ export function PoultryAdvisoryPage({ setCurrentPage }: PoultryAdvisoryPageProps
   return (
     <div className="min-h-screen flex flex-col" style={{ background: '#f2f6f5' }}>
 
-      {/* ── Hero Banner ── */}
+      {/* Page-specific SEO & OG tags */}
+      <Helmet>
+        <title>Poultry Advisory Tool — ANT Adaptive Nesting Technologies</title>
+        <meta name="description" content="Plan your flock, forecast profits and get a full feed plan for Broilers, Layers and Kienyeji. Free poultry advisory tool by ANT — Kenya 2024–2025 verified data." />
+        <meta property="og:title" content="Poultry Advisory Tool — Plan your flock. Maximise your returns." />
+        <meta property="og:description" content="Free poultry planning tool by ANT. Get feed cost breakdown, vaccination schedule, profit forecast and breed comparison. Kenya verified data." />
+        <meta property="og:url" content="https://www.adaptivenestingtech.com/poultry-advisory" />
+        <meta property="og:image" content="https://www.adaptivenestingtech.com/og-poultry.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="ANT Poultry Advisory Tool — Plan your flock and maximise returns" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Poultry Advisory Tool — ANT" />
+        <meta name="twitter:description" content="Free poultry planning tool. Feed costs, vaccination schedule, profit forecast for Kenyan farmers." />
+        <meta name="twitter:image" content="https://www.adaptivenestingtech.com/og-poultry.png" />
+      </Helmet>
+
+      {/* Hero Banner */}
       <div
         className="relative overflow-hidden"
         style={{
@@ -65,7 +83,6 @@ export function PoultryAdvisoryPage({ setCurrentPage }: PoultryAdvisoryPageProps
             cost breakdown and profitability forecast for Broilers, Layers and Kienyeji.
           </p>
 
-          {/* Feature pills — nowrap + auto width so text always fits */}
           <div className="flex flex-wrap items-center justify-center gap-3">
             {features.map((f) => (
               <span
@@ -89,7 +106,7 @@ export function PoultryAdvisoryPage({ setCurrentPage }: PoultryAdvisoryPageProps
         </div>
       </div>
 
-      {/* ── Tool ── */}
+      {/* Tool iframe */}
       <iframe
         src="/poultry-tool.html"
         title="ANT Poultry Budget Planner"
