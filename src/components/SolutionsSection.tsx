@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Cpu, Check, ChevronLeft, ChevronRight, Monitor, ArrowRight, HeartHandshake, Sun, BarChart2, Tag, Database, RefreshCw } from 'lucide-react';
+import { Cpu, Check, ChevronLeft, ChevronRight, Monitor, ArrowRight, HeartHandshake, Sun, BarChart2, Tag, Database } from 'lucide-react';
 
 const IMAGES = [
   { src: 'https://i.imgur.com/IsdQlQq.jpeg', alt: 'JotoPro Heater in use on farm' },
@@ -317,17 +317,7 @@ export function SolutionsSection({ setCurrentPage }: SolutionsSectionProps) {
                     </div>
                   ))}
                 </div>
-                <div className="bg-[#00A651]/5 border border-[#00A651]/20 rounded-2xl p-5 mb-8">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="w-7 h-7 rounded-lg bg-[#00A651]/10 flex items-center justify-center flex-shrink-0">
-                      <RefreshCw className="w-4 h-4 text-[#00A651]" />
-                    </div>
-                    <p className="text-sm font-bold text-[#043236]">The ANT Data Flywheel</p>
-                  </div>
-                  <p className="text-sm text-[#6F6F6F] leading-relaxed">
-                    Better farm data → smarter recommendations → improved performance → stronger credit profile → access to capital and markets.
-                  </p>
-                </div>
+
                 <button className="btn-green" onClick={() => setCurrentPage && setCurrentPage('poultry-advisory')}>
                   Poultry Advisory Tool <ArrowRight className="w-4 h-4" />
                 </button>
