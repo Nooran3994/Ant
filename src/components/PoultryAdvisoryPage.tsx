@@ -26,24 +26,35 @@ export function PoultryAdvisoryPage({ setCurrentPage }: PoultryAdvisoryPageProps
     'Breed Comparison',
   ];
 
+  const OG_IMAGE = 'https://adaptivenestingtech.com/og-poultry.png';
+
   return (
     <div className="min-h-screen flex flex-col" style={{ background: '#f2f6f5' }}>
 
-      {/* Page-specific SEO & OG tags */}
       <Helmet>
         <title>Poultry Advisory Tool — ANT Adaptive Nesting Technologies</title>
         <meta name="description" content="Plan your flock, forecast profits and get a full feed plan for Broilers, Layers and Kienyeji. Free poultry advisory tool by ANT — Kenya 2024–2025 verified data." />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://adaptivenestingtech.com/poultry-advisory" />
         <meta property="og:title" content="Poultry Advisory Tool — Plan your flock. Maximise your returns." />
         <meta property="og:description" content="Free poultry planning tool by ANT. Get feed cost breakdown, vaccination schedule, profit forecast and breed comparison. Kenya verified data." />
-        <meta property="og:url" content="https://www.adaptivenestingtech.com/poultry-advisory" />
-        <meta property="og:image" content="https://www.adaptivenestingtech.com/og-poultry.png" />
+        <meta property="og:image" content={OG_IMAGE} />
+        <meta property="og:image:secure_url" content={OG_IMAGE} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
         <meta property="og:image:alt" content="ANT Poultry Advisory Tool — Plan your flock and maximise returns" />
+        <meta property="og:site_name" content="Adaptive Nesting Technologies" />
+
+        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ANT_AgriTech" />
         <meta name="twitter:title" content="Poultry Advisory Tool — ANT" />
         <meta name="twitter:description" content="Free poultry planning tool. Feed costs, vaccination schedule, profit forecast for Kenyan farmers." />
-        <meta name="twitter:image" content="https://www.adaptivenestingtech.com/og-poultry.png" />
+        <meta name="twitter:image" content={OG_IMAGE} />
+        <meta name="twitter:image:alt" content="ANT Poultry Advisory Tool" />
       </Helmet>
 
       {/* Hero Banner */}
