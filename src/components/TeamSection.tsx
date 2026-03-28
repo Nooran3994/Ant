@@ -5,19 +5,19 @@ export function TeamSection() {
   const team = [
     {
       name: 'Victor Gituma',
-      role: 'Co-Founder & CEO',
+      role: 'Co-Founder',
       image: 'https://i.imgur.com/sd59bEp.jpeg',
       linkedin: 'https://www.linkedin.com/in/vkgituma?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
     },
     {
       name: 'Alfred Mutethia',
-      role: 'COO',
+      role: 'Co-Founder',
       image: 'https://i.imgur.com/KVmWX5a.jpeg',
       linkedin: 'https://www.linkedin.com/in/alfred-mutethia-bb90a7345?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
     },
     {
       name: 'Stephen Mwaura',
-      role: 'CTO',
+      role: 'Co-Founder',
       image: 'https://i.imgur.com/aL35U05.jpeg',
       linkedin: 'https://www.linkedin.com/in/stephen-mwaura-b41851228?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
     },
