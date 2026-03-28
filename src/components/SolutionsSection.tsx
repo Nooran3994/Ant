@@ -34,6 +34,12 @@ const servicesFeatures = [
   'Farm setup advisory from housing to flock management',
 ];
 
+const TABS = [
+  { key: 'hardware', label: 'Hardware', icon: Cpu },
+  { key: 'software', label: 'Software', icon: Monitor },
+  { key: 'services', label: 'Services', icon: HeartHandshake },
+];
+
 interface SolutionsSectionProps {
   setCurrentPage?: (page: string) => void;
 }
@@ -89,6 +95,47 @@ export function SolutionsSection({ setCurrentPage }: SolutionsSectionProps) {
         .slide-in-left   { animation: slideInFromLeft  0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
         .slide-out-left  { animation: slideOutToLeft   0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
         .slide-out-right { animation: slideOutToRight  0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
+
+        .tab-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 24px;
+          border-radius: 999px;
+          font-size: 15px;
+          font-weight: 700;
+          letter-spacing: 0.01em;
+          cursor: pointer;
+          border: 2px solid transparent;
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          overflow: hidden;
+          user-select: none;
+        }
+        .tab-pill-inactive {
+          background: #f3f4f6;
+          color: #6b7280;
+          border-color: #e5e7eb;
+        }
+        .tab-pill-inactive:hover {
+          background: #e8f7f0;
+          color: #043236;
+          border-color: rgba(0,166,81,0.35);
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(0,166,81,0.12);
+        }
+        .tab-pill-active {
+          background: linear-gradient(135deg, #00A651 0%, #008c44 100%);
+          color: #ffffff;
+          border-color: transparent;
+          box-shadow: 0 4px 18px rgba(0,166,81,0.35);
+          transform: translateY(-1px);
+        }
+        .tab-pill-active:hover {
+          box-shadow: 0 6px 24px rgba(0,166,81,0.45);
+          transform: translateY(-2px);
+        }
+
         .btn-lease {
           display: inline-flex; align-items: center; gap: 12px;
           color: white; font-weight: 600; font-size: 15px;
@@ -133,19 +180,16 @@ export function SolutionsSection({ setCurrentPage }: SolutionsSectionProps) {
             </p>
           </div>
 
-          {/* Tabs */}
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-12 sm:mb-16">
-            {['hardware', 'software', 'services'].map((tab) => (
+          {/* Tabs — pill toggle */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12 sm:mb-16">
+            {TABS.map(({ key, label, icon: Icon }) => (
               <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`pb-2 capitalize transition-colors text-sm sm:text-base ${
-                  activeTab === tab
-                    ? 'border-b-2 border-[#043236] text-[#043236] font-semibold'
-                    : 'text-[#6F6F6F] hover:text-[#043236]'
-                }`}
+                key={key}
+                onClick={() => setActiveTab(key)}
+                className={`tab-pill ${activeTab === key ? 'tab-pill-active' : 'tab-pill-inactive'}`}
               >
-                {tab}
+                <Icon size={16} strokeWidth={2.2} />
+                {label}
               </button>
             ))}
           </div>
@@ -229,7 +273,7 @@ export function SolutionsSection({ setCurrentPage }: SolutionsSectionProps) {
                   ))}
                 </div>
 
-                {/* Data-Driven callout — now lives in the right column */}
+                {/* Data-Driven callout */}
                 <div className="bg-[#043236]/5 border border-[#043236]/10 rounded-2xl p-5">
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-7 h-7 rounded-lg bg-[#043236]/10 flex items-center justify-center flex-shrink-0">
