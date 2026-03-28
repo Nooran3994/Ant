@@ -9,7 +9,6 @@ const IMAGES = [
 const hardwareFeatures = [
   'Precise temperature control with innovative infrared technology',
   'Solar-powered — zero electricity costs, runs off-grid on any farm',
-  'Energy savings up to 30% compared to traditional brooding methods',
   'Serves 500+ chicks per unit with uniform heat distribution',
   'Smart temperature regulation adapting automatically to weather changes',
   'Built-in data collection for farm performance and flock insights',
@@ -264,7 +263,7 @@ export function SolutionsSection({ setCurrentPage }: SolutionsSectionProps) {
                 </div>
 
                 {/* Dot indicators */}
-                <div className="flex justify-center gap-2 mt-4 mb-5">
+                <div className="flex justify-center gap-2 mt-4 mb-8">
                   {IMAGES.map((_, i) => (
                     <button key={i} onClick={() => goTo(i, i > current ? 'right' : 'left')}
                       className="rounded-full transition-all duration-300"
