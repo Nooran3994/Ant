@@ -280,11 +280,8 @@ export function SolutionsSection({ setCurrentPage }: SolutionsSectionProps) {
                     </div>
                     <p className="text-sm font-bold text-[#043236]">Data-Driven Farm Services</p>
                   </div>
-                  <p className="text-sm text-[#6F6F6F] leading-relaxed">
-                    Every JotoPro unit collects real farm data. We use this to offer farmers
-                    <strong className="text-[#043236]"> credit scoring</strong>,
-                    <strong className="text-[#043236]"> market linkages</strong>, and
-                    <strong className="text-[#043236]"> personalised advisory services</strong> — turning your farm data into real financial opportunities.
+                  <p className="text-sm sm:text-base text-[#6F6F6F] leading-relaxed">
+                    Every JotoPro unit collects real farm data. We use this to offer farmers credit scoring, market linkages, and personalised advisory services — turning your farm data into real financial opportunities.
                   </p>
                 </div>
               </div>

@@ -10,7 +10,6 @@ import { StorySection } from './components/StorySection';
 import { TeamSection } from './components/TeamSection';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
-import { ScrollToTop } from './components/ScrollToTop';
 import { GetStartedPage } from './components/GetStartedPage';
 import { PoultryAdvisoryPage } from './components/PoultryAdvisoryPage';
 
@@ -45,7 +44,6 @@ function AppRoutes() {
             <TeamSection />
             <CTASection setCurrentPage={setCurrentPage} />
             <Footer />
-            <ScrollToTop />
           </>
         } />
         <Route path="/get-started" element={<GetStartedPage setCurrentPage={setCurrentPage} />} />
