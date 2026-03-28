@@ -10,8 +10,8 @@ export function ResultsSection() {
     },
     {
       icon: TrendingUp,
-      value: 'High',
-      description: 'Boost in farm profitability'
+      value: '30%',
+      description: 'Increase in farm profitability'
     },
     {
       icon: Sun,
@@ -28,7 +28,7 @@ export function ResultsSection() {
   const benefits = [
     {
       title: 'Profitability',
-      description: 'Our innovative solutions directly impact your bottom line, reducing operational costs and maximizing yields. Lower energy costs and better yields translate to better margins. Transform your farming operation into a more profitable business.'
+      description: 'Our innovative solutions directly impact your bottom line, delivering up to a 30% increase in farm profitability by reducing operational costs and maximizing yields. Lower energy costs and better yields translate to better margins. Transform your farming operation into a more profitable business.'
     },
     {
       title: 'Sustainability',

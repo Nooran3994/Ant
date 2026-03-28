@@ -43,8 +43,7 @@ export function HeroSection({ setCurrentPage }: HeroSectionProps) {
 
         {/* Subtext — white with key words in ANT green */}
         <p className="text-white text-base sm:text-lg lg:text-xl mb-10 max-w-3xl mx-auto leading-relaxed">
-          We innovate solutions like JotoPro — a solar-powered smart brooder that reduces chick mortality,
-          eliminates <span style={{ color: '#00A651', fontWeight: 600 }}>electricity costs</span> and boosts <span style={{ color: '#00A651', fontWeight: 600 }}>profitability</span>.
+         We innovate solutions like JotoPro — a solar-powered smart brooder that reduces chick mortality, eliminates electricity costs and boosts profitability.
         </p>
 
         {/* CTA Buttons — bigger */}
