@@ -1643,6 +1643,251 @@
       color: var(--dim);
       font-style: italic
     }
+
+    /* ── GUIDE OVERLAY ── */
+    .guide-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(4, 50, 54, .92);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(4px)
+    }
+
+    .guide-overlay.show {
+      display: flex
+    }
+
+    .guide-box {
+      background: #fff;
+      border-radius: 20px;
+      max-width: 680px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .3);
+      position: relative;
+      overflow: hidden;
+      animation: guideSlideIn .4s ease-out
+    }
+
+    @keyframes guideSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .guide-header {
+      background: linear-gradient(135deg, var(--t) 0%, var(--t2) 100%);
+      padding: 28px 32px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .guide-header::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 180px;
+      height: 180px;
+      background: rgba(0, 166, 81, .15);
+      border-radius: 50%
+    }
+
+    .guide-header h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 6px 0;
+      position: relative
+    }
+
+    .guide-header p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, .8);
+      margin: 0;
+      position: relative
+    }
+
+    .guide-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: rgba(255, 255, 255, .15);
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+      transition: all .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1
+    }
+
+    .guide-close:hover {
+      background: rgba(255, 255, 255, .25);
+      transform: rotate(90deg)
+    }
+
+    .guide-body {
+      padding: 32px;
+      max-height: calc(100vh - 240px);
+      overflow-y: auto
+    }
+
+    .guide-step {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 28px;
+      align-items: flex-start
+    }
+
+    .guide-step:last-child {
+      margin-bottom: 0
+    }
+
+    .guide-step-num {
+      width: 36px;
+      height: 36px;
+      background: var(--g);
+      color: #fff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      flex-shrink: 0
+    }
+
+    .guide-step-content h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--t);
+      margin: 0 0 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .guide-step-content p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0
+    }
+
+    .guide-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--g3);
+      color: var(--g2);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 12px;
+      margin: 0 2px
+    }
+
+    .guide-footer {
+      padding: 24px 32px;
+      background: var(--s1);
+      border-top: 1px solid var(--b);
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end
+    }
+
+    .guide-btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .guide-btn-primary {
+      background: var(--g);
+      color: #fff
+    }
+
+    .guide-btn-primary:hover {
+      background: var(--g2);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 166, 81, .3)
+    }
+
+    .guide-btn-secondary {
+      background: #fff;
+      color: var(--t);
+      border: 1.5px solid var(--b)
+    }
+
+    .guide-btn-secondary:hover {
+      background: var(--s1);
+      border-color: var(--g)
+    }
+
+    .guide-icon {
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      vertical-align: -3px
+    }
+
+    @media(max-width:680px) {
+      .guide-box {
+        margin: 0;
+        border-radius: 16px;
+        max-height: 90vh
+      }
+
+      .guide-header {
+        padding: 24px 20px
+      }
+
+      .guide-header h2 {
+        font-size: 20px
+      }
+
+      .guide-body {
+        padding: 24px 20px
+      }
+
+      .guide-step {
+        gap: 14px;
+        margin-bottom: 24px
+      }
+
+      .guide-footer {
+        padding: 20px;
+        flex-direction: column
+      }
+
+      .guide-btn {
+        width: 100%
+      }
+    }
   </style>
 </head>
 
@@ -1895,6 +2140,14 @@
             <path d="M3 2h7l3 3v9H3V2z" />
             <path d="M10 2v3h3M5 8h6M5 11h4" />
           </svg> Sources</button>
+        <button class="tab-btn" onclick="document.getElementById('guideOverlay').classList.add('show')"
+          style="margin-left:auto;border:1.5px dashed var(--g);color:var(--g)">
+          <svg viewBox="0 0 16 16" fill="currentColor" width="14" height="14" style="vertical-align:-2px">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+          </svg> How to Use This Tool
+        </button>
       </div>
       <div class="tab-pane on card" id="pane-phase">
         <div class="card-hd"><span class="ico"></span> Phase-by-Phase Cost Breakdown</div>
@@ -1940,6 +2193,136 @@
       </div>
     </div>
   </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════════
+     USER GUIDE OVERLAY
+     ══════════════════════════════════════════════════════════════════════════ -->
+  <div class="guide-overlay" id="guideOverlay">
+    <div class="guide-box">
+      <div class="guide-header">
+        <button class="guide-close" onclick="closeGuide()" aria-label="Close guide">×</button>
+        <h2>🎯 Welcome to Your Poultry Planning Tool</h2>
+        <p>Let's walk through how to get the most out of your plan</p>
+      </div>
+
+      <div class="guide-body">
+        <div class="guide-step">
+          <div class="guide-step-num">1</div>
+          <div class="guide-step-content">
+            <h3>
+              <svg class="guide-icon" viewBox="0 0 20 20" fill="var(--g)">
+                <path
+                  d="M9 4.804A7.968 7.968 0 0 0 5.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 0 1 5.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0 1 14.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0 0 14.5 4c-1.255 0-2.443.29-3.5.804V12a.5.5 0 0 1-1 0V4.804z" />
+              </svg>
+              Navigate Through Tabs
+            </h3>
+            <p>Your plan is organized into sections. Click the tabs below your summary cards to explore:</p>
+            <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:6px">
+              <span class="guide-highlight">📊 Phase Overview</span>
+              <span class="guide-highlight">📅 Daily Schedule</span>
+              <span class="guide-highlight">🌾 Feed Guide</span>
+              <span class="guide-highlight">💉 Vaccines</span>
+              <span class="guide-highlight">📈 Profitability</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="guide-step-num">2</div>
+          <div class="guide-step-content">
+            <h3>
+              <svg class="guide-icon" viewBox="0 0 20 20" fill="var(--g)">
+                <path
+                  d="M10 2a6 6 0 0 0-6 6v3.586l-.707.707A1 1 0 0 0 4 14h12a1 1 0 0 0 .707-1.707L16 11.586V8a6 6 0 0 0-6-6zM9 17a1 1 0 0 0 2 0H9z" />
+              </svg>
+              Pay Attention to Transitions
+            </h3>
+            <p>The <span class="guide-highlight" style="background:var(--ptr);color:var(--ptrt)">⚡ Amber "Transition"
+                rows</span> in your Daily Schedule show when to gradually mix feeds. <strong>Never switch feeds
+                abruptly</strong> — this causes 10-15% weight loss and mortality. Follow the mix ratios exactly.</p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="guide-step-num">3</div>
+          <div class="guide-step-content">
+            <h3>
+              <svg class="guide-icon" viewBox="0 0 20 20" fill="var(--g)">
+                <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm1-12a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l2.828 2.829a1 1 0 1 0 1.415-1.415L11 9.586V6z"
+                  clip-rule="evenodd" />
+              </svg>
+              Mark Your Vaccination Calendar
+            </h3>
+            <p>Go to the <span class="guide-highlight">💉 Vaccines & Vials</span> tab and write down <strong>every
+                vaccination date</strong> before your chicks arrive. Missing a vaccine can destroy your entire flock.
+              Each vaccine has a specific timing window — delays = losses.</p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="guide-step-num">4</div>
+          <div class="guide-step-content">
+            <h3>
+              <svg class="guide-icon" viewBox="0 0 20 20" fill="var(--g)">
+                <path
+                  d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 0 1-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 0 1-.567.267z" />
+                <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1.643-4.618c.42.28.938.484 1.493.584v.65a.75.75 0 0 0 1.5 0v-.65c.555-.1 1.073-.305 1.493-.584C13.446 13.078 14 12.35 14 11.5c0-.85-.554-1.578-1.157-1.882A3.306 3.306 0 0 0 11.35 9.034v-2.37c.29.06.548.153.774.288.13.078.241.17.336.276a.75.75 0 1 0 1.08-1.04 3.305 3.305 0 0 0-.667-.538A3.306 3.306 0 0 0 11.35 5.066V4.5a.75.75 0 0 0-1.5 0v.566c-.555.1-1.073.305-1.493.584C7.554 6.422 7 7.15 7 8c0 .85.554 1.578 1.157 1.882.273.164.577.292.907.384v2.37c-.29-.06-.548-.153-.774-.288a2.19 2.19 0 0 1-.336-.276.75.75 0 1 0-1.08 1.04c.194.201.407.381.667.538a3.305 3.305 0 0 0 1.493.584v.566a.75.75 0 0 0 1.5 0v-.566z"
+                  clip-rule="evenodd" />
+              </svg>
+              Adjust Your Profitability Forecast
+            </h3>
+            <p>In the <span class="guide-highlight">📈 Profitability</span> tab, enter your actual selling prices and
+              mortality estimate. All calculations update instantly. This shows if your venture will be profitable at
+              current market prices.</p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="guide-step-num">5</div>
+          <div class="guide-step-content">
+            <h3>
+              <svg class="guide-icon" viewBox="0 0 20 20" fill="var(--g)">
+                <path fill-rule="evenodd"
+                  d="M4 4a2 2 0 0 1 2-2h4.586A2 2 0 0 1 12 2.586L15.414 6A2 2 0 0 1 16 7.414V16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4zm2 6a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H7a1 1 0 0 1-1-1zm1 3a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H7z"
+                  clip-rule="evenodd" />
+              </svg>
+              Verify Data Sources
+            </h3>
+            <p>Click the <span class="guide-highlight">📄 Sources</span> tab to see where every number comes from. All
+              breed performance data is from official standards (Cobb 500, ISA Brown, Kenchic). Prices reflect Kenya
+              2024-2025 market rates. Always verify current prices with your local agrovet before purchasing.</p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="guide-step-num">6</div>
+          <div class="guide-step-content">
+            <h3>
+              <svg class="guide-icon" viewBox="0 0 20 20" fill="var(--g)">
+                <path
+                  d="M10.894 2.553a1 1 0 0 0-1.788 0l-7 14a1 1 0 0 0 1.169 1.409l5-1.429A1 1 0 0 0 9 15.571V11a1 1 0 1 1 2 0v4.571a1 1 0 0 0 .725.962l5 1.428a1 1 0 0 0 1.17-1.408l-7-14z" />
+              </svg>
+              Print or Save Your Plan
+            </h3>
+            <p>Use your browser's print function (<kbd
+                style="background:var(--s2);padding:2px 6px;border-radius:4px;font-size:11px;border:1px solid var(--b)">Ctrl+P</kbd>
+              or <kbd
+                style="background:var(--s2);padding:2px 6px;border-radius:4px;font-size:11px;border:1px solid var(--b)">⌘+P</kbd>)
+              to save this plan as PDF. Keep it with you in the field. Re-generate anytime to compare different
+              scenarios.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-footer">
+        <button class="guide-btn guide-btn-secondary" onclick="closeGuide()">I'll Explore on My Own</button>
+        <button class="guide-btn guide-btn-primary" onclick="closeGuide()">Got It, Let's Start →</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     /* ============================================================
        DATA — VERIFIED SOURCES
@@ -2621,6 +3004,14 @@
     /* ============ CALCULATE ============ */
     function calculate() {
       hasGenerated = true;
+
+      // Show guide on first calculation
+      if (!localStorage.getItem('antPoultryGuideShown')) {
+        setTimeout(() => {
+          document.getElementById('guideOverlay').classList.add('show');
+          localStorage.setItem('antPoultryGuideShown', 'true');
+        }, 800);
+      }
       const breedKey = document.getElementById('breedSel').value;
       const breed = BREEDS[breedKey];
       const phases = PHASES[breed.phaseKey];
@@ -3471,6 +3862,28 @@
       btn.classList.add('on');
       document.getElementById('pane-' + id).classList.add('on');
     }
+
+    /* ════════════════════════════════════════════════════════════════════
+       GUIDE OVERLAY CONTROLS
+       ════════════════════════════════════════════════════════════════════ */
+    function closeGuide() {
+      document.getElementById('guideOverlay').classList.remove('show');
+    }
+
+    // Close guide on ESC key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { closeGuide(); }
+    });
+
+    // Close guide on backdrop click
+    document.getElementById('guideOverlay').addEventListener('click', function (e) {
+      if (e.target === this) { closeGuide(); }
+    });
+
+    // Prevent guide box clicks from closing overlay
+    document.querySelector('.guide-box').addEventListener('click', function (e) {
+      e.stopPropagation();
+    });
   </script>
 
   <script>
