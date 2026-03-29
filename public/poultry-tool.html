@@ -226,6 +226,34 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
   .ds-row{grid-template-columns:85px 1fr 70px;font-size:11px}
   .ds-row .wt-col,.ds-row > div:nth-child(4){display:none}
 }
+/* ── TIER TOOLTIP ── */
+.tier-wrap{position:relative;flex:1}
+.tier-wrap .tier-btn{width:100%}
+.tier-tip{
+  display:none;
+  position:absolute;
+  bottom:calc(100% + 10px);
+  left:50%;
+  transform:translateX(-50%);
+  width:230px;
+  background:#fff;
+  border:1.5px solid var(--b);
+  border-radius:12px;
+  padding:13px 15px;
+  box-shadow:0 8px 28px rgba(4,50,54,.16);
+  z-index:999;
+  pointer-events:none;
+}
+.tier-wrap:hover .tier-tip{display:block}
+.tier-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:#fff;}
+.tier-tip::before{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(1px);border:8px solid transparent;border-top-color:var(--b);}
+.tier-tip-name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.tier-tip-name.bud{color:#92400e}.tier-tip-name.std{color:var(--t)}.tier-tip-name.prm{color:var(--g2)}
+.ttr{display:flex;align-items:flex-start;gap:7px;font-size:11px;color:var(--muted);margin-bottom:5px;line-height:1.45}
+.ttr:last-of-type{margin-bottom:0}
+.ttr svg{flex-shrink:0;margin-top:1px}
+.tier-tip-divider{border:none;border-top:1px solid var(--b);margin:8px 0}
+.tier-tip-price{font-size:10px;color:var(--dim);font-style:italic}
 </style>
 </head>
 <body>
@@ -287,25 +315,59 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
     </div>
     <div style="margin-bottom:14px">
       <div class="fg" style="margin-bottom:6px"><label>Feed Tier Preference</label></div>
-      <div class="tier-row">
-        <div class="tier-btn budget" onclick="setTier('budget',this)">
-          <div class="tl">
-            <svg viewBox="0 0 20 20" fill="currentColor" width="15" height="15" style="vertical-align:-2px;margin-right:4px"><path d="M10.75 10.818V13.5a.75.75 0 0 1-1.5 0v-2.682l-.964.482a.75.75 0 0 1-.672-1.342l2-1a.75.75 0 0 1 .672 0l2 1a.75.75 0 0 1-.672 1.342l-.864-.482zM10 2a8 8 0 1 0 0 16A8 8 0 0 0 10 2zm0 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13zM9.25 6.5a.75.75 0 0 1 1.5 0v1.25H12a.75.75 0 0 1 0 1.5H8a.75.75 0 0 1 0-1.5h1.25V6.5z"/></svg>Budget
+      <div class="tier-row" style="display:flex;gap:8px;margin-bottom:14px">
+
+        <!-- BUDGET -->
+        <div class="tier-wrap">
+          <div class="tier-btn budget" onclick="setTier('budget',this)">
+            <div class="tl"><svg viewBox="0 0 20 20" fill="currentColor" width="15" height="15" style="vertical-align:-2px;margin-right:4px"><path d="M10.75 10.818V13.5a.75.75 0 0 1-1.5 0v-2.682l-.964.482a.75.75 0 0 1-.672-1.342l2-1a.75.75 0 0 1 .672 0l2 1a.75.75 0 0 1-.672 1.342l-.864-.482zM10 2a8 8 0 1 0 0 16A8 8 0 0 0 10 2zm0 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13zM9.25 6.5a.75.75 0 0 1 1.5 0v1.25H12a.75.75 0 0 1 0 1.5H8a.75.75 0 0 1 0-1.5h1.25V6.5z"/></svg>Budget</div>
+            <div class="td">Dola, Pembe, Greenfield</div>
           </div>
-          <div class="td">Dola, Pembe, Greenfield</div>
-        </div>
-        <div class="tier-btn standard on" onclick="setTier('standard',this)">
-          <div class="tl">
-            <svg viewBox="0 0 20 20" fill="currentColor" width="15" height="15" style="vertical-align:-2px;margin-right:4px"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 0 1 2.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0 1 10 1.944zM11.207 9.5l-2.5 2.5a.75.75 0 0 1-1.06 0L6.293 10.646a.75.75 0 1 1 1.06-1.06l.854.853 1.97-1.97a.75.75 0 1 1 1.06 1.06l-.03.031z" clip-rule="evenodd"/></svg>Standard
+          <div class="tier-tip">
+            <div class="tier-tip-name bud">&#x1F4B0; Budget Tier</div>
+            <div class="ttr"><svg viewBox="0 0 16 16" fill="var(--g2)" width="12" height="12"><circle cx="8" cy="8" r="7"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>Meets KEBS minimum standards</div>
+            <div class="ttr"><svg viewBox="0 0 16 16" fill="var(--g2)" width="12" height="12"><circle cx="8" cy="8" r="7"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>Best for small farms &amp; hardy breeds</div>
+            <div class="ttr"><svg viewBox="0 0 16 16" fill="#f59e0b" width="12" height="12"><circle cx="8" cy="8" r="7"/><path d="M8 5v3M8 10.5v.5" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>No enzyme complex &#x2014; slightly higher FCR</div>
+            <div class="ttr"><svg viewBox="0 0 16 16" fill="#f59e0b" width="12" height="12"><circle cx="8" cy="8" r="7"/><path d="M8 5v3M8 10.5v.5" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>No mycotoxin binder &#x2014; higher aflatoxin risk</div>
+            <hr class="tier-tip-divider"/>
+            <div class="tier-tip-price">Brands: Dola &middot; Pembe &middot; Greenfield</div>
           </div>
-          <div class="td">Belfast, Isinya, Sigma</div>
         </div>
-        <div class="tier-btn premium" onclick="setTier('premium',this)">
-          <div class="tl">
-            <svg viewBox="0 0 20 20" fill="currentColor" width="15" height="15" style="vertical-align:-2px;margin-right:4px"><path fill-rule="evenodd" d="M5.5 2A2.5 2.5 0 0 0 3 4.5V5H2a.75.75 0 0 0 0 1.5h.25l.93 9.045A1.75 1.75 0 0 0 4.924 17h10.15a1.75 1.75 0 0 0 1.743-1.455L17.75 6.5H18A.75.75 0 0 0 18 5h-1V4.5A2.5 2.5 0 0 0 14.5 2h-9zm-.5 3V4.5a1 1 0 0 1 2 0V5H5zm4 0V4.5a1 1 0 0 1 2 0V5H9zm4 0V4.5a1 1 0 0 1-1-1V5h1zM8.25 9.75a.75.75 0 0 1 1.5 0V13a.75.75 0 0 1-1.5 0V9.75zm3.25-.75a.75.75 0 0 1 .75.75V13a.75.75 0 0 1-1.5 0V9.75a.75.75 0 0 1 .75-.75z" clip-rule="evenodd"/></svg>Premium
+
+        <!-- STANDARD -->
+        <div class="tier-wrap">
+          <div class="tier-btn standard on" onclick="setTier('standard',this)">
+            <div class="tl"><svg viewBox="0 0 20 20" fill="currentColor" width="15" height="15" style="vertical-align:-2px;margin-right:4px"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 0 1 2.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0 1 10 1.944zM11.207 9.5l-2.5 2.5a.75.75 0 0 1-1.06 0L6.293 10.646a.75.75 0 1 1 1.06-1.06l.854.853 1.97-1.97a.75.75 0 1 1 1.06 1.06l-.03.031z" clip-rule="evenodd"/></svg>Standard</div>
+            <div class="td">Belfast, Isinya, Sigma</div>
           </div>
-          <div class="td">Fugo (Unga), Sigma Hi-Yield</div>
+          <div class="tier-tip">
+            <div class="tier-tip-name std">&#x2B50; Standard Tier</div>
+            <div class="ttr"><svg viewBox="0 0 16 16" fill="var(--g2)" width="12" height="12"><circle cx="8" cy="8" r="7"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>Good Ca-P balance &amp; vitamin complex</div>
+            <div class="ttr"><svg viewBox="0 0 16 16" fill="var(--g2)" width="12" height="12"><circle cx="8" cy="8" r="7"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>Consistent quality &#x2014; widely available upcountry</div>
+            <div class="ttr"><svg viewBox="0 0 16 16" fill="var(--g2)" width="12" height="12"><circle cx="8" cy="8" r="7"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>Best value for money &#x2014; suits most farms</div>
+            <div class="ttr"><svg viewBox="0 0 16 16" fill="#f59e0b" width="12" height="12"><circle cx="8" cy="8" r="7"/><path d="M8 5v3M8 10.5v.5" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>Limited enzyme complex on some products</div>
+            <hr class="tier-tip-divider"/>
+            <div class="tier-tip-price">Brands: Belfast &middot; Isinya &middot; Sigma</div>
+          </div>
         </div>
+
+        <!-- PREMIUM -->
+        <div class="tier-wrap">
+          <div class="tier-btn premium" onclick="setTier('premium',this)">
+            <div class="tl"><svg viewBox="0 0 20 20" fill="currentColor" width="15" height="15" style="vertical-align:-2px;margin-right:4px"><path fill-rule="evenodd" d="M5.5 2A2.5 2.5 0 0 0 3 4.5V5H2a.75.75 0 0 0 0 1.5h.25l.93 9.045A1.75 1.75 0 0 0 4.924 17h10.15a1.75 1.75 0 0 0 1.743-1.455L17.75 6.5H18A.75.75 0 0 0 18 5h-1V4.5A2.5 2.5 0 0 0 14.5 2h-9zm-.5 3V4.5a1 1 0 0 1 2 0V5H5zm4 0V4.5a1 1 0 0 1 2 0V5H9zm4 0V4.5a1 1 0 0 1-1-1V5h1zM8.25 9.75a.75.75 0 0 1 1.5 0V13a.75.75 0 0 1-1.5 0V9.75zm3.25-.75a.75.75 0 0 1 .75.75V13a.75.75 0 0 1-1.5 0V9.75a.75.75 0 0 1 .75-.75z" clip-rule="evenodd"/></svg>Premium</div>
+            <div class="td">Fugo (Unga), Sigma Hi-Yield</div>
+          </div>
+          <div class="tier-tip">
+            <div class="tier-tip-name prm">&#x1F3C6; Premium Tier</div>
+            <div class="ttr"><svg viewBox="0 0 16 16" fill="var(--g2)" width="12" height="12"><circle cx="8" cy="8" r="7"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>Enzyme complex &#x2014; 5&#x2013;8% better digestibility</div>
+            <div class="ttr"><svg viewBox="0 0 16 16" fill="var(--g2)" width="12" height="12"><circle cx="8" cy="8" r="7"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>Mycotoxin binder &#x2014; guards against aflatoxin</div>
+            <div class="ttr"><svg viewBox="0 0 16 16" fill="var(--g2)" width="12" height="12"><circle cx="8" cy="8" r="7"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>Enriched Lysine &amp; Methionine &#x2014; faster growth</div>
+            <div class="ttr"><svg viewBox="0 0 16 16" fill="var(--g2)" width="12" height="12"><circle cx="8" cy="8" r="7"/><path d="M5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>Best FCR &#x2014; fewer bags to reach target weight</div>
+            <hr class="tier-tip-divider"/>
+            <div class="tier-tip-price">Brands: Fugo (Unga) &middot; Sigma Hi-Yield</div>
+          </div>
+        </div>
+
       </div>
     </div>
     <button class="calc-btn" onclick="triggerCalculate()">Generate Full Plan →</button>
