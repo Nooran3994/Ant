@@ -336,7 +336,7 @@
 
     .sum-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       margin-bottom: 18px
     }
@@ -1518,7 +1518,7 @@
       }
 
       .sum-grid {
-        grid-template-columns: 1fr 1fr
+        grid-template-columns: 1fr
       }
 
       .fg3 {
@@ -2656,8 +2656,7 @@
       document.getElementById('sumGrid').innerHTML = `
     <div class="sc dk"><div class="sv">${n.toLocaleString()}</div><div class="sl">Chicks · ${breed.type}</div><div class="su">${breed.name.split('(')[0].trim()}</div></div>
     <div class="sc"><div class="sv" style="font-size:19px;color:var(--g2)">KSh ${fmt(grand)}</div><div class="sl">Total Lifetime Budget</div><div class="su">Chicks + Feed + Vaccines</div></div>
-    <div class="sc"><div class="sv">${fmtD(kg)} kg</div><div class="sl">Total Feed Required</div><div class="su">${fmtD(kg / n)} kg per bird</div></div>
-    <div class="sc"><div class="sv" style="font-size:19px">KSh ${fmt(grand / n)}</div><div class="sl">Cost Per Bird</div><div class="su">Full cycle</div></div>`;
+    <div class="sc"><div class="sv">${fmtD(kg)} kg</div><div class="sl">Total Feed Required</div><div class="su">${fmtD(kg / n)} kg per bird</div></div>`;
     }
 
     function renderPhaseTable(phases, n, chickCost, vaxTotal, grand) {
