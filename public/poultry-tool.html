@@ -389,39 +389,42 @@
 
     .tab-row {
       display: flex;
-      gap: 4px;
+      gap: 6px;
       background: var(--s2);
-      padding: 4px;
+      padding: 6px;
       border-radius: 12px;
       margin-bottom: 18px;
       overflow-x: auto;
-      flex-wrap: wrap
+      flex-wrap: wrap;
+      border: 1px solid var(--b)
     }
 
     .tab-btn {
-      padding: 8px 14px;
-      border: none;
+      padding: 10px 18px;
+      border: 2px solid transparent;
       background: transparent;
-      border-radius: 9px;
+      border-radius: 20px;
       cursor: pointer;
       font-family: inherit;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--muted);
       white-space: nowrap;
       transition: all .2s
     }
 
     .tab-btn:hover:not(.on) {
-      background: var(--b);
+      background: var(--g3);
       color: var(--t);
-      transform: translateY(-1px)
+      transform: translateY(-1px);
+      border-color: var(--g)
     }
 
     .tab-btn.on {
-      background: #fff;
-      color: var(--t);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, .08)
+      background: var(--g);
+      color: #fff;
+      border-color: var(--g);
+      box-shadow: 0 2px 8px rgba(0, 166, 81, .3)
     }
 
     .tab-pane {
