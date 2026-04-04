@@ -1888,6 +1888,66 @@
         width: 100%
       }
     }
+
+    /* ── FEEDBACK FAB ── */
+    .feedback-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 22px;
+      background: var(--t);
+      color: #fff;
+      border-radius: 50px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(4, 50, 54, .35);
+      transition: all .25s ease;
+      cursor: pointer;
+      animation: fab-glow 2.5s ease-in-out infinite;
+    }
+
+    .feedback-fab:hover {
+      background: var(--g);
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 6px 24px rgba(0, 166, 81, .4);
+      animation: none;
+    }
+
+    .feedback-fab:active {
+      transform: translateY(0) scale(.98);
+    }
+
+    .feedback-fab svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .feedback-fab-text {
+      white-space: nowrap;
+    }
+
+    @keyframes fab-glow {
+      0%, 100% { box-shadow: 0 4px 18px rgba(4, 50, 54, .35); }
+      50% { box-shadow: 0 4px 24px rgba(0, 166, 81, .45), 0 0 0 6px rgba(0, 166, 81, .1); }
+    }
+
+    @media (max-width: 680px) {
+      .feedback-fab {
+        padding: 14px;
+        bottom: 18px;
+        right: 18px;
+      }
+      .feedback-fab-text {
+        display: none;
+      }
+    }
   </style>
 </head>
 
@@ -3881,6 +3941,17 @@
       window.addEventListener('load', report);
     })();
   </script>
+
+  <!-- Feedback FAB -->
+  <a id="feedbackFab" class="feedback-fab"
+    href="https://docs.google.com/forms/d/e/1FAIpQLSc1JxjahtsixA5xCs5-HJuoB3z-5RbmmSlnmd2WQw-K6PBUyw/viewform?usp=publish-editor"
+    target="_blank" rel="noopener noreferrer"
+    title="Share your feedback on the Poultry Advisory Tool">
+    <svg viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 0 1-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7ZM7 9H5v2h2V9Zm8 0h-2v2h2V9Zm-5 0H8v2h2V9Z" clip-rule="evenodd"/>
+    </svg>
+    <span class="feedback-fab-text">Share Feedback</span>
+  </a>
 
 </body>
 
